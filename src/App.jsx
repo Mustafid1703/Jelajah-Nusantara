@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import Header from './components/Header/Header';
 import Herosection from './components/Herosection/Herosection';
-import Navigasi from './components/Navigasi/Navigasi';
+import Category from './components/Category/category';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,7 +12,7 @@ function App() {
     <>
       <Header />
       <Herosection />
-      <Navigasi />
+      <Category />
     </>
   )
 }
