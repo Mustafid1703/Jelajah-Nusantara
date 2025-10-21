@@ -1,20 +1,18 @@
-import { useState } from 'react'
-// import './App.css'
+import Header from "./components/Header/Header";
+import HeroSection from "./components/Herosection/Herosection";
+import ServicesSection from "./components/ServicesSection/ServicesSection";
+import DestinationsSection from "./components/DestinationsSection/DestinationsSection";
+import PopularToursSection from "./components/PopularToursSection/PopularToursSection";
+import "./App.css";
 
-import Header from './components/Header/Header';
-import Herosection from './components/Herosection/Herosection';
-import Category from './components/Category/category';
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
       <Header />
-      <Herosection />
-      <Category />
+      <HeroSection />
+      <ServicesSection />
+      <DestinationsSection />
+      <PopularToursSection />
     </>
-  )
+  );
 }
-
-export default App
