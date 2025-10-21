@@ -1,4 +1,5 @@
 import React from "react";
+import mdnc from '../../assets/images/mdnc.png'
 
 const heroText = {
   EN: {
@@ -30,9 +31,9 @@ function Hero({ language }) {
         </div>
         <div className="relative mt-10 md:mt-0 md:w-1/2 flex justify-center">
           <img
-            src="mdnc.png"
+            src={mdnc}
             alt="Traveler"
-            className="relative z-10 w-[340px] md:w-[420px] lg:w-[480px] object-contain drop-shadow-lg transition-transform duration-500 ease-out hover:scale-110 hover:rotate-3 hover:shadow-2xl animate-floating"
+            className="relative z-10 w-[340px] md:w-[420px] lg:w-[480px]"
           />
         </div>
       </div>
