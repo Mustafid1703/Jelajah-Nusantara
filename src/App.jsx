@@ -1,18 +1,22 @@
+import React, { useState } from "react";
 import Header from "./components/Header/Header";
-import HeroSection from "./components/Herosection/Herosection";
-import ServicesSection from "./components/ServicesSection/ServicesSection";
-import DestinationsSection from "./components/DestinationsSection/DestinationsSection";
+import Hero from "./components/Herosection/Herosection";
+import Services from "./components/ServicesSection/ServicesSection";
+import Destinations from "./components/DestinationsSection/DestinationsSection";
 import PopularToursSection from "./components/PopularToursSection/PopularToursSection";
-import "./App.css";
 
-export default function App() {
+function App() {
+  const [language, setLanguage] = useState("EN");
+
   return (
-    <>
-      <Header />
-      <HeroSection />
-      <ServicesSection />
-      <DestinationsSection />
-      <PopularToursSection />
-    </>
+    <div className="font-sans bg-white">
+      <Header language={language} setLanguage={setLanguage} />
+      <Hero language={language} />
+      <Services language={language} />
+      <Destinations language={language} />
+      <PopularToursSection language={language} />
+    </div>
   );
 }
+
+export default App;
