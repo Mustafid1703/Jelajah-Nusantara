@@ -1,10 +1,8 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-function Header() {
+function Header({ language, setLanguage }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [language, setLanguage] = useState("EN"); // default English
 
-  // Teks untuk dua bahasa
   const text = {
     EN: {
       destinations: "Destinations",
@@ -27,7 +25,6 @@ function Header() {
   return (
     <header className="fixed top-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
         <h1 className="text-2xl font-bold text-orange-500">JelajahYuk!</h1>
 
         {/* Desktop Menu */}
@@ -61,7 +58,7 @@ function Header() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <nav className="md:hidden flex flex-col bg-white px-6 pb-4 gap-4 text-gray-700 font-medium shadow-lg animate-slideDown">
+        <nav className="md:hidden flex flex-col bg-white px-6 pb-4 gap-4 text-gray-700 font-medium shadow-lg">
           <a href="#" className="hover:text-orange-500">{text[language].destinations}</a>
           <a href="#" className="hover:text-orange-500">{text[language].hotels}</a>
           <a href="#" className="hover:text-orange-500">{text[language].flights}</a>
@@ -71,7 +68,6 @@ function Header() {
             {text[language].signup}
           </button>
 
-          {/* Language Toggle for Mobile */}
           <button
             onClick={() => setLanguage(language === "EN" ? "ID" : "EN")}
             className="border px-3 py-1 rounded w-20 hover:bg-gray-100 transition"
