@@ -52,15 +52,16 @@ function Header() {
 
         {/* Hamburger Button */}
         <button
-          className="md:hidden text-gray-700"
+          className="md:hidden text-gray-700 text-3xl"
           onClick={() => setMenuOpen(!menuOpen)}
         >
+          {menuOpen ? "✖" : "☰"}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <nav className="md:hidden flex flex-col bg-white px-6 pb-4 gap-4 text-gray-700 font-medium shadow-lg">
+        <nav className="md:hidden flex flex-col bg-white px-6 pb-4 gap-4 text-gray-700 font-medium shadow-lg animate-slideDown">
           <a href="#" className="hover:text-orange-500">{text[language].destinations}</a>
           <a href="#" className="hover:text-orange-500">{text[language].hotels}</a>
           <a href="#" className="hover:text-orange-500">{text[language].flights}</a>
