@@ -1,55 +1,93 @@
 import React from "react";
-import rome from '../../assets/images/rome ITLY.jpg';
-import london from '../../assets/images/london uk.jpg';
-import Europe from '../../assets/images/Europe.jpg';
 
-const destinationsText = {
-  EN: {
-    title: "Top Destinations",
-    subtitle: "Top Selling",
-    places: [
-      { name: "Rome, Italy", price: "$5,42k", img: rome },
-      { name: "London, UK", price: "$4,20k", img: london },
-      { name: "Full Europe", price: "$15k", img: Europe },
-    ],
-  },
-  ID: {
-    title: "Destinasi Teratas",
-    subtitle: "Terlaris",
-    places: [
-      { name: "Roma, Italia", price: "Rp 5,42k", img: rome },
-      { name: "London, UK", price: "Rp 4,20k", img: london },
-      { name: "Seluruh Eropa", price: "Rp 15k", img: Europe },
-    ],
-  },
-};
+const TopSelling = ({ language }) => {
+  const text = {
+    EN: {
+      topSelling: "Top Selling",
+      topDestinations: "Top Destinations",
+      bookNow: "Book Now",
+      viewDetails: "View Details",
+      priceFrom: "Starting from",
+      destinations: [
+        { title: "Java – Borobudur – Prambanan", price: "Rp 2.500.000", img: "candi.jpg" },
+        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: "danauToba.webp" },
+        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: "bali.png" },
+      ],
+    },
+    ID: {
+      topSelling: "Terlaris",
+      topDestinations: "Destinasi Terbaik",
+      bookNow: "Pesan Sekarang",
+      viewDetails: "Lihat Detail",
+      priceFrom: "Mulai dari",
+      destinations: [
+        { title: "Jawa – Borobudur – Prambanan", price: "Rp 2.500.000", img: "candi.jpg" },
+        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: "danauToba.webp" },
+        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: "bali.png" },
+      ],
+    },
+  };
 
-function Destinations({ language }) {
-  const t = destinationsText[language];
   return (
-    <section className="py-20 px-10 bg-gray-50 text-center">
-      <h2 className="text-sm text-orange-500 font-semibold uppercase mb-2">{t.subtitle}</h2>
-      <h3 className="text-3xl font-bold text-gray-800 mb-12">{t.title}</h3>
+    <section
+      id="TopSelling"
+      className="py-24 px-6 md:px-10 text-center bg-white"
+    >
+      <h2 className="text-sm text-orange-500 font-semibold uppercase tracking-widest mb-2 animate-fadeIn">
+        {text[language].topSelling}
+      </h2>
+      <h3 className="text-4xl md:text-5xl font-extrabold text-gray-800 mb-14 animate-slideUp">
+        {text[language].topDestinations}
+      </h3>
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {t.places.map((place, i) => (
+        {text[language].destinations.map((dest, index) => (
           <div
-            key={i}
-            className="bg-white rounded-2xl shadow-md overflow-hidden hover:-translate-y-2 transition"
+            key={index}
+            className="group bg-white rounded-3xl shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl animate-zoomIn"
           >
-            <img
-              src={place.img}
-              alt={place.name}
-              className="w-full h-60 object-cover"
-            />
+            <div className="relative overflow-hidden">
+              <img
+                src={dest.img}
+                alt={dest.title}
+                className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+            </div>
             <div className="p-6 text-left">
-              <h4 className="font-semibold text-lg mb-2">{place.name}</h4>
-              <p className="text-orange-500 font-semibold">{place.price}</p>
+              <h4 className="text-xl font-bold text-gray-800 mb-1">{dest.title}</h4>
+              <p className="text-gray-500 text-sm mb-4">
+                {text[language].priceFrom} {dest.price}
+              </p>
+              <div className="flex space-x-3">
+                <a
+                  href="#"
+                  className="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300 text-sm"
+                >
+                  {text[language].bookNow}
+                </a>
+                <a
+                  href="#"
+                  className="bg-white text-blue-500 border border-blue-500 font-semibold py-2 px-4 rounded-lg hover:bg-blue-50 transition-colors duration-300 text-sm"
+                >
+                  {text[language].viewDetails}
+                </a>
+              </div>
             </div>
           </div>
         ))}
       </div>
+
+      <style>{`
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
+        .animate-slideUp { animation: slideUp 1s ease-out forwards; }
+        .animate-zoomIn { animation: zoomIn 1s ease-out forwards; }
+        .animate-fadeInScale { animation: fadeIn 1.2s ease-in-out; }
+      `}</style>
     </section>
   );
-}
+};
 
-export default Destinations;
+export default TopSelling;

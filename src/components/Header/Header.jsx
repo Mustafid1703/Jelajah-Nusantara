@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Header({ language, setLanguage }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const text = {
     EN: {
+      logo: "Let's Explore",
       destinations: "Destinations",
       hotels: "Hotels",
       flights: "Flights",
@@ -13,6 +15,7 @@ function Header({ language, setLanguage }) {
       signup: "Sign up",
     },
     ID: {
+      logo: "JelajahYuk!",
       destinations: "Destinasi",
       hotels: "Hotel",
       flights: "Penerbangan",
@@ -25,7 +28,10 @@ function Header({ language, setLanguage }) {
   return (
     <header className="fixed top-0 w-full bg-white shadow z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-orange-500">JelajahYuk!</h1>
+        {/* Logo berubah sesuai bahasa */}
+        <Link to="/" className="text-2xl font-bold text-orange-500">
+          {text[language].logo}
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex gap-6 text-gray-700 font-medium items-center">
@@ -33,12 +39,15 @@ function Header({ language, setLanguage }) {
           <a href="#" className="hover:text-orange-500">{text[language].hotels}</a>
           <a href="#" className="hover:text-orange-500">{text[language].flights}</a>
           <a href="#" className="hover:text-orange-500">{text[language].bookings}</a>
-          <a href="#" className="hover:text-orange-500">{text[language].login}</a>
-          <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600">
+          
+          <Link to="/login" className="hover:text-orange-500">{text[language].login}</Link>
+          <Link
+            to="/signup"
+            className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600"
+          >
             {text[language].signup}
-          </button>
+          </Link>
 
-          {/* Language Toggle */}
           <button
             onClick={() => setLanguage(language === "EN" ? "ID" : "EN")}
             className="border px-3 py-1 rounded hover:bg-gray-100 transition"
@@ -63,10 +72,14 @@ function Header({ language, setLanguage }) {
           <a href="#" className="hover:text-orange-500">{text[language].hotels}</a>
           <a href="#" className="hover:text-orange-500">{text[language].flights}</a>
           <a href="#" className="hover:text-orange-500">{text[language].bookings}</a>
-          <a href="#" className="hover:text-orange-500">{text[language].login}</a>
-          <button className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600">
+
+          <Link to="/login" className="hover:text-orange-500">{text[language].login}</Link>
+          <Link
+            to="/signup"
+            className="bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600"
+          >
             {text[language].signup}
-          </button>
+          </Link>
 
           <button
             onClick={() => setLanguage(language === "EN" ? "ID" : "EN")}
