@@ -1,86 +1,50 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Signup = ({ language }) => {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const text = {
-    EN: {
-      title: "Sign Up",
-      email: "Email",
-      password: "Password",
-      confirmPassword: "Confirm Password",
-      signupBtn: "Sign Up",
-    },
-    ID: {
-      title: "Daftar",
-      email: "Email",
-      password: "Kata Sandi",
-      confirmPassword: "Konfirmasi Kata Sandi",
-      signupBtn: "Daftar",
-    },
+    EN: { signup: "Sign Up", username: "Username", password: "Password", submit: "Register" },
+    ID: { signup: "Daftar", username: "Nama Pengguna", password: "Kata Sandi", submit: "Daftar" },
   };
+
+  const t = text[language];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (!email || !password || !confirmPassword) {
-      alert("Please fill all fields!");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
-    alert(`${text[language].title} successful!`);
-    navigate("/"); // pindah ke halaman home setelah signup
+    // Simpan user ke localStorage
+    localStorage.setItem("loggedInUser", JSON.stringify({ username, password }));
+    navigate("/profile");
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-md"
-      >
-        <h1 className="text-3xl font-bold mb-6 text-center">{text[language].title}</h1>
-
-        <label className="block mb-2 font-medium">{text[language].email}</label>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md">
+        <h1 className="text-3xl font-bold mb-6">{t.signup}</h1>
         <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+          type="text"
+          placeholder={t.username}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          className="w-full mb-4 p-3 border rounded"
           required
         />
-
-        <label className="block mb-2 font-medium">{text[language].password}</label>
         <input
           type="password"
+          placeholder={t.password}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="w-full mb-6 p-3 border rounded"
           required
         />
-
-        <label className="block mb-2 font-medium">{text[language].confirmPassword}</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          className="w-full p-3 mb-6 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
-          required
-        />
-
         <button
           type="submit"
           className="w-full bg-orange-500 text-white py-3 rounded-lg hover:bg-orange-600 transition"
         >
-          {text[language].signupBtn}
+          {t.submit}
         </button>
       </form>
     </div>
