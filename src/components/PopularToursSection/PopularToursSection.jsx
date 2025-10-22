@@ -1,5 +1,13 @@
 import React from "react";
 
+// Import semua gambar dari folder src/assets/images
+import bali from "../../assets/images/bali.webp";
+import lombok from "../../assets/images/lombok.png";
+import rajaAmpat from "../../assets/images/raja ampat.jpg";
+import borobudur from "../../assets/images/borobudur.jpg";
+import kawahPutih from "../../assets/images/kawah putih.webp";
+import labuanBajo from "../../assets/images/labuan bajo.jpg";
+
 const TourCard = ({ title, price, imageSrc, language }) => (
   <div className="bg-white shadow-lg rounded-2xl overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition duration-300">
     <img src={imageSrc} alt={title} className="w-full h-56 object-cover" />
@@ -22,12 +30,12 @@ const TourCard = ({ title, price, imageSrc, language }) => (
 
 const PopularTours = ({ language }) => {
   const tours = [
-    { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", image: "bali.webp" },
-    { title: "Lombok – Gili Trawangan – Pink Beach", price: "Rp 3.800.000", image: "lombok.png" },
-    { title: "Raja Ampat – Wayag – Piaynemo", price: "Rp 7.500.000", image: "raja ampat.jpg" },
-    { title: "Yogyakarta – Borobudur – Malioboro", price: "Rp 2.500.000", image: "borobudur.jpg" },
-    { title: "Bandung – Lembang – Kawah Putih", price: "Rp 1.800.000", image: "kawah putih.webp" },
-    { title: "Labuan Bajo – Pulau Komodo – Padar", price: "Rp 6.200.000", image: "labuan bajo.jpg" },
+    { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", image: bali },
+    { title: "Lombok – Gili Trawangan – Pink Beach", price: "Rp 3.800.000", image: lombok },
+    { title: "Raja Ampat – Wayag – Piaynemo", price: "Rp 7.500.000", image: rajaAmpat },
+    { title: "Yogyakarta – Borobudur – Malioboro", price: "Rp 2.500.000", image: borobudur },
+    { title: "Bandung – Lembang – Kawah Putih", price: "Rp 1.800.000", image: kawahPutih },
+    { title: "Labuan Bajo – Pulau Komodo – Padar", price: "Rp 6.200.000", image: labuanBajo },
   ];
 
   const text = {

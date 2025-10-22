@@ -1,4 +1,7 @@
 import React from "react";
+import candi from "../../assets/images/candi.jpg";
+import danauToba from "../../assets/images/danauToba.webp";
+import bali from "../../assets/images/bali.png";
 
 const TopSelling = ({ language }) => {
   const text = {
@@ -9,9 +12,9 @@ const TopSelling = ({ language }) => {
       viewDetails: "View Details",
       priceFrom: "Starting from",
       destinations: [
-        { title: "Java – Borobudur – Prambanan", price: "Rp 2.500.000", img: "candi.jpg" },
-        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: "danauToba.webp" },
-        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: "bali.png" },
+        { title: "Java – Borobudur – Prambanan", price: "Rp 2.500.000", img: candi },
+        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: danauToba },
+        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: bali },
       ],
     },
     ID: {
@@ -21,9 +24,9 @@ const TopSelling = ({ language }) => {
       viewDetails: "Lihat Detail",
       priceFrom: "Mulai dari",
       destinations: [
-        { title: "Jawa – Borobudur – Prambanan", price: "Rp 2.500.000", img: "candi.jpg" },
-        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: "danauToba.webp" },
-        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: "bali.png" },
+        { title: "Jawa – Borobudur – Prambanan", price: "Rp 2.500.000", img: candi },
+        { title: "Sumatra – Danau Toba – Samosir", price: "Rp 3.000.000", img: danauToba },
+        { title: "Bali – Nusa Penida – Ubud", price: "Rp 3.500.000", img: bali },
       ],
     },
   };
@@ -47,6 +50,7 @@ const TopSelling = ({ language }) => {
             className="group bg-white rounded-3xl shadow-lg overflow-hidden transform transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl animate-zoomIn"
           >
             <div className="relative overflow-hidden">
+              {/* Pakai variabel import gambar */}
               <img
                 src={dest.img}
                 alt={dest.title}
@@ -84,10 +88,10 @@ const TopSelling = ({ language }) => {
         .animate-fadeIn { animation: fadeIn 1s ease-out forwards; }
         .animate-slideUp { animation: slideUp 1s ease-out forwards; }
         .animate-zoomIn { animation: zoomIn 1s ease-out forwards; }
-        .animate-fadeInScale { animation: fadeIn 1.2s ease-in-out; }
       `}</style>
     </section>
   );
 };
 
 export default TopSelling;
+  
